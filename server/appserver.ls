@@ -4,7 +4,7 @@ server.get '/', !(req, res)->
 	res.sendfile "build/index.html"
 
 server.get '/context.json', !(req, res)->
-	res.sendfile "build/seedApp.json"
+	res.sendfile "build/hegemony.json"
 
 server.jefri.runtime.load "http://localhost:3000/context.json"
 

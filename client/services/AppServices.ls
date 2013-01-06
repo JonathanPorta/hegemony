@@ -16,4 +16,4 @@ AppService = (JEFRi)->
 
 	new AppService!
 
-angular.module \seedApp
+angular.module \hegemony

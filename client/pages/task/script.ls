@@ -4,7 +4,7 @@ controller = !($scope, appService) ->
 		fn = !->
 			appService.doSomething!
 
-angular.module \seedApp
+angular.module \hegemony
 	.controller \task, [\$scope, \AppService, controller]
 
 angular.classmap do
