@@ -35,7 +35,7 @@ module.exports = function(grunt) {
 					'build/scripts/services.js'   : 'client/services/*ls',
 					'build/scripts/directives.js' : 'client/directives/*ls',
 					'build/scripts/components.js' : 'client/components/**/*ls',
-					'build/scripts/pages.js'      : 'client/pages/**/*ls',
+//					'build/scripts/pages.js'      : 'client/pages/**/*ls',
 					'lib/appserver.js'            : 'server/appserver.ls'
 				},
 				options: {
@@ -67,30 +67,29 @@ module.exports = function(grunt) {
 			}
 		},
 		concat: {
-			dev: {
-				'build/app.js' : [
-					'client/app.js'
-				],
-				'build/scripts/components.js': [
-					'build/scripts/components.js',
-					'client/components/**/*js'
-				],
-				'build/scripts/filters.js': [
-					'build/scripts/filters.js',
-					'client/filters/**/*js'
-				],
-				'build/scripts/pages.js': [
-					'build/scripts/pages.js',
-					'client/pages/**/*js'
-				],
-				'build/scripts/directives.js': [
-					'build/scripts/directives.js',
-					'client/directives/**/*js'
-				],
-				'build/scripts/services.js': [
-					'build/scripts/services.js',
-					'client/services/**/*js'
-				]
+			app: {
+				src:  [ 'client/app.js' ],
+				dest: 'build/scripts/app.js'
+			},
+			components: {
+				src:  [ 'build/scripts/components.js', 'client/components/**/*js' ],
+				dest: 'build/scripts/components.js'
+			},
+			services: {
+				src:  [ 'build/scripts/services.js', 'client/services/**/*js' ],
+				dest: 'build/scripts/services.js'
+			},
+			filters: {
+				src:  [ 'build/scripts/filters.js', 'client/filters/**/*js' ],
+				dest: 'build/scripts/filters.js'
+			},
+			pages: {
+				src:  [ 'build/scripts/pages.js', 'client/pages/**/*js' ],
+				dest: 'build/scripts/pages.js'
+			},
+			directives: {
+				src:  [ 'build/scripts/directives.js', 'client/directives/**/*js' ],
+				dest: 'build/scripts/directives.js'
 			}
 //			,
 //			dist: {
@@ -153,7 +152,7 @@ module.exports = function(grunt) {
 //	grunt.registerTask('views', 'jade:templates jade:page jade:list');s
 //	grunt.registerTask('scripts', 'livescript:app concat:js concat:jsServices concat:jsFilters concat:ls livescript:dist concat:dist');
 //	grunt.registerTask('styles', 'stylus:app mincss:dist');
-	grunt.registerTask('dev', 'lint jade:dev livescript:dev stylus:dev copy:dev');
+	grunt.registerTask('dev', 'lint jade:dev livescript:dev stylus:dev concat copy:dev');
 	grunt.registerTask('tests', 'livescript:test concat:unit');
 	grunt.registerTask('default', 'clean dev');
 };
